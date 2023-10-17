@@ -1,0 +1,47 @@
+
+Packet sniffing is the process of capturing and analyzing network traffic in order to gather information or troubleshoot  problems. Packet sniffing tools are  essential for network administrators, security professionals, and anyone else who  needs to monitor network activity.
+Packet sniffing tools capture and analyze network traffic by intercepting packets as they are transmitted over the network.  They do this by using a network interface in “promiscuous mode,” which allows them to see all packets transmitted over  the network, not just those intended for the device running the packet sniffer.
+To capture packets, packet sniffing tools use a network interface’s low-level functions to access the raw data transmitted  over the network. This raw data is then processed and analyzed to extract information about the packets, such as the  sender and recipient addresses, the data being transmitted, and other metadata.
+Network packet sniffers are essential tools for network administrators, security professionals,  and developers to monitor and analyze network traffic. The primary goal of this project is to  provide a versatile and extensible tool for capturing, inspecting, and analyzing packets on a  network interface.
+The Network Packet Traffic Sniffing, begins by importing the necessary libraries and defining a  function for packet processing. The Scapy library enables the program to interact with network  packets at a low level, allowing users to inspect and manipulate packet data. The program  which is coded is Python using the relevant libraries captures HTTP packets from a specified  network interface, processes them using user-defined criteria, and presents relevant  information, such as packet headers, payloads, and protocol details.
+
+
+import scapy.all as scapy 
+
+def sniff(interface):
+    scapy.sniff(iface=interface, store=False, prn=process_sniffed_packet)
+def process_sniffed_packet(packet):
+    if packet.haslayer(scapy.IP):
+        ip_packet = packet[scapy.IP]
+        source_ip = ip_packet.src
+        destination_ip = ip_packet.dst
+        print("IP Packet - Source: {}, Destination: {}".format(source_ip, destination_ip))
+
+    if packet.haslayer(scapy.TCP):
+        tcp_packet = packet[scapy.TCP]
+        source_port = tcp_packet.sport
+        destination_port = tcp_packet.dport
+        print("TCP Packet - Source Port: {}, Destination Port: {}".format(source_port, destination_port))
+
+    if packet.haslayer(scapy.UDP):
+        udp_packet = packet[scapy.UDP]
+        source_port = udp_packet.sport
+        destination_port = udp_packet.dport
+        print("UDP Packet - Source Port: {}, Destination Port: {}".format(source_port, destination_port))
+        
+def process_sniffed_packet(packet):
+    print(packet)
+sniff('Wi-Fi')
+
+Creating a network packet sniffer using Python typically involves utilizing libraries such as Scapy or ARG parse or  Colorama to capture and analyse network packets. Below is a module description for building a basic network  packet sniffer using Python 
+This module provides an in-depth exploration of network packet sniffing techniques using Python programming
+language. Participants will learn how to capture, analyse, and manipulate network packets for various purposes,  including network troubleshooting, security analysis, and protocol understanding.
+Module Objectives:
+1. Introduction to Network Protocols:
+-	Understand the basics of network protocols such as TCP/IP, ARP, UDP, and HTTP.
+-	Learn about the structure of network packets and their components.
+2. Python Basics and Libraries:
+-	Introduction to Python programming language and its fundamentals.
+-	Overview of libraries like Scapy and ARG parse for packet manipulation.
+3.  Packet Capturing :
+        - The network packets such as HTTP, FTP, TCP, ARP, UDP are captured by the python program and the aforementioned    libraries and packages when the program is executed in the corresponding IDE 
